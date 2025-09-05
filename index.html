@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funny Love Site</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #dc2626; /* red background */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 4rem;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .yes {
+      background: #4ade80;
+      color: black;
+      font-weight: bold;
+    }
+    .yes:hover {
+      background: #22c55e;
+      transform: scale(1.1);
+    }
+
+    .no {
+      background: black;
+      color: white;
+      position: absolute;
+    }
+
+    /* Second Page */
+    .congrats-page {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+      background: linear-gradient(135deg, #f9a8d4, #f87171, #fde68a);
+      color: black;
+    }
+
+    .congrats-text {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      animation: bounce 1s infinite;
+    }
+
+    .subtext {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .emoji-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      font-size: 5rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Page -->
+  <div class="container" id="home">
+    <div class="title">lund kahyega? ❤️</div>
+    <div class="buttons">
+      <button class="yes" id="yesBtn">Yes ✅</button>
+      <button class="no" id="noBtn" style="left:200px;">No ❌</button>
+    </div>
+  </div>
+
+  <!-- Congrats Page -->
+  <div class="congrats-page" id="congrats">
+    <div class="congrats-text">🎉 Congratulations! 🎉</div>
+    <div class="subtext">You chose lund ❤️, here’s a bouquet just for you!</div>
+    <div class="emoji-box">
+      <div>💐</div>
+      <div>🧸</div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const home = document.getElementById("home");
+    const congrats = document.getElementById("congrats");
+
+    noBtn.addEventListener("mouseenter", () => {
+      const randX = Math.floor(Math.random() * 600 - 300);
+      const randY = Math.floor(Math.random() * 400 - 200);
+      noBtn.style.transform = `translate(${randX}px, ${randY}px)`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      home.style.display = "none";
+      congrats.style.display = "flex";
+    });
+  </script>
+</body>
+</html>
